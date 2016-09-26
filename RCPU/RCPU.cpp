@@ -5,6 +5,7 @@
 #include "DeviceManger.h"
 #include "ConfigManger.h"
 #include "AlarmManger.h"
+#include "WebServiceManger.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -21,6 +22,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	strcpy_s(testDevice.szName, "admin"); 
 	strcpy_s(testDevice.szUserName, "admin");
 	strcpy_s(testDevice.szPwd, "12345");
+
+
+	CWebServiceManger WebServiceManger;
+	WebServiceManger.Start();
+
 	for (int i = 0; i < 10; i++)
 	{
 		testDevice.iPort = 8000 +  i;
@@ -33,7 +39,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	HPR_Sleep(100000);
 	AlarmManger.Close();
-
+	
 	while (true)
 	{
 		HPR_Sleep(10000);
