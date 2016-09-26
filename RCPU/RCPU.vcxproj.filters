@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DEVICE">
+      <UniqueIdentifier>{d23105aa-7a04-4234-8490-8e73d18d099d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ALARM">
+      <UniqueIdentifier>{ce4c884e-b936-42f1-bac3-5d9771c68dd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{dda3d797-6f38-45c1-9407-42b8c49ccde2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WebServiceInterface">
+      <UniqueIdentifier>{436fbd64-661a-48cc-964c-c4def5af3a39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="HPR">
+      <UniqueIdentifier>{5e5db7b2-9f85-4cde-91ec-7035459fa3ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLOG">
+      <UniqueIdentifier>{73a75b3f-a1d0-4c5f-bed0-b4dee57d8f56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HCNetSDK">
+      <UniqueIdentifier>{f0008f4a-6d6b-43b3-b0f5-33c1818ea799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CONFIG">
+      <UniqueIdentifier>{197c5a01-177f-4923-87a2-ddb6206ca28a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WebService">
+      <UniqueIdentifier>{6d6cbb37-644a-4866-b4de-5813832b8007}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceManger.h">
+      <Filter>DEVICE</Filter>
+    </ClInclude>
+    <ClInclude Include="AlarmManger.h">
+      <Filter>ALARM</Filter>
+    </ClInclude>
+    <ClInclude Include="MangerInterface.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\cmsws_defines.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\DeviceInfoService_Defines.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\DeviceInfoService_Services.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\DeviceInfoService_stub.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\envH.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\envStub.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\gsoap_server.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\stdsoap2.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\VehicleInfoService_Defines.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\VehicleInfoService_Services.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceInterface\VehicleInfoService_stub.h">
+      <Filter>WebServiceInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Addr.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_AlignMem.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_AsyncIO.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_AsyncIOEX.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Atomic.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Cond.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Config.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_CycleBuffer.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_DllSo.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Error.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Event.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_FileSystem.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Guard.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Hpr.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Inet_Addr.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_IOCompletionQ.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_MsgQ.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Mutex.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Net_Addr.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Net_Utils.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Netdb.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Select.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Semaphore.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_SimpleHash.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_SimpleIntHash.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Singleton.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_SmartPtr.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Sock_Utils.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Socket.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_String.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Thread.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_ThreadPool.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_ThreadPoolFlex.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Time.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Timer.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Types.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\HPR_Utils.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\inter_include.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hpr\TimedWait.h">
+      <Filter>HPR</Filter>
+    </ClInclude>
+    <ClInclude Include="hlog\hlog.h">
+      <Filter>HLOG</Filter>
+    </ClInclude>
+    <ClInclude Include="hlog\hlog_media.h">
+      <Filter>HLOG</Filter>
+    </ClInclude>
+    <ClInclude Include="hlog\hlog1.h">
+      <Filter>HLOG</Filter>
+    </ClInclude>
+    <ClInclude Include="hlog\hlog4cxx.h">
+      <Filter>HLOG</Filter>
+    </ClInclude>
+    <ClInclude Include="hlog\hlogconfig.h">
+      <Filter>HLOG</Filter>
+    </ClInclude>
+    <ClInclude Include="hlog\hlogex.h">
+      <Filter>HLOG</Filter>
+    </ClInclude>
+    <ClInclude Include="HCNetSDK\DataType.h">
+      <Filter>HCNetSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="HCNetSDK\DecodeCardSdk.h">
+      <Filter>HCNetSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="HCNetSDK\HCNetSDK.h">
+      <Filter>HCNetSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="HCNetSDK\plaympeg4.h">
+      <Filter>HCNetSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigManger.h">
+      <Filter>CONFIG</Filter>
+    </ClInclude>
+    <ClInclude Include="WebServiceManger.h">
+      <Filter>WebService</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RCPU.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceManger.cpp">
+      <Filter>DEVICE</Filter>
+    </ClCompile>
+    <ClCompile Include="AlarmManger.cpp">
+      <Filter>ALARM</Filter>
+    </ClCompile>
+    <ClCompile Include="MangerInterface.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Interface.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigManger.cpp">
+      <Filter>CONFIG</Filter>
+    </ClCompile>
+    <ClCompile Include="WebServiceManger.cpp">
+      <Filter>WebService</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

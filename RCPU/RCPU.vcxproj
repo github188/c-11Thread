@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3D4B916E-22F0-46AF-9AA4-CD3B2D5260C4}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>RCPU</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;./lib/hpr.lib;./lib/hlog.lib;./lib/log4cxx.lib;./lib/letterLib.lib;./lib/eXosipd.lib;./lib/libappweb.lib;./lib/libhttp.lib;./lib/libmpr.lib;./lib/hcnetsdk.lib;./lib/libpq.lib;./lib/vrbClientSDK.lib;./lib/VehicleInfoService.lib;./lib/gsoap.lib;./lib/DeviceInfoService.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlarmManger.h" />
+    <ClInclude Include="ConfigManger.h" />
+    <ClInclude Include="DeviceManger.h" />
+    <ClInclude Include="HCNetSDK\DataType.h" />
+    <ClInclude Include="HCNetSDK\DecodeCardSdk.h" />
+    <ClInclude Include="HCNetSDK\HCNetSDK.h" />
+    <ClInclude Include="HCNetSDK\plaympeg4.h" />
+    <ClInclude Include="hlog\hlog.h" />
+    <ClInclude Include="hlog\hlog1.h" />
+    <ClInclude Include="hlog\hlog4cxx.h" />
+    <ClInclude Include="hlog\hlogconfig.h" />
+    <ClInclude Include="hlog\hlogex.h" />
+    <ClInclude Include="hlog\hlog_media.h" />
+    <ClInclude Include="hpr\HPR_Addr.h" />
+    <ClInclude Include="hpr\HPR_AlignMem.h" />
+    <ClInclude Include="hpr\HPR_AsyncIO.h" />
+    <ClInclude Include="hpr\HPR_AsyncIOEX.h" />
+    <ClInclude Include="hpr\HPR_Atomic.h" />
+    <ClInclude Include="hpr\HPR_Cond.h" />
+    <ClInclude Include="hpr\HPR_Config.h" />
+    <ClInclude Include="hpr\HPR_CycleBuffer.h" />
+    <ClInclude Include="hpr\HPR_DllSo.h" />
+    <ClInclude Include="hpr\HPR_Error.h" />
+    <ClInclude Include="hpr\HPR_Event.h" />
+    <ClInclude Include="hpr\HPR_FileSystem.h" />
+    <ClInclude Include="hpr\HPR_Guard.h" />
+    <ClInclude Include="hpr\HPR_Hpr.h" />
+    <ClInclude Include="hpr\HPR_Inet_Addr.h" />
+    <ClInclude Include="hpr\HPR_IOCompletionQ.h" />
+    <ClInclude Include="hpr\HPR_MsgQ.h" />
+    <ClInclude Include="hpr\HPR_Mutex.h" />
+    <ClInclude Include="hpr\HPR_Netdb.h" />
+    <ClInclude Include="hpr\HPR_Net_Addr.h" />
+    <ClInclude Include="hpr\HPR_Net_Utils.h" />
+    <ClInclude Include="hpr\HPR_Select.h" />
+    <ClInclude Include="hpr\HPR_Semaphore.h" />
+    <ClInclude Include="hpr\HPR_SimpleHash.h" />
+    <ClInclude Include="hpr\HPR_SimpleIntHash.h" />
+    <ClInclude Include="hpr\HPR_Singleton.h" />
+    <ClInclude Include="hpr\HPR_SmartPtr.h" />
+    <ClInclude Include="hpr\HPR_Socket.h" />
+    <ClInclude Include="hpr\HPR_Sock_Utils.h" />
+    <ClInclude Include="hpr\HPR_String.h" />
+    <ClInclude Include="hpr\HPR_Thread.h" />
+    <ClInclude Include="hpr\HPR_ThreadPool.h" />
+    <ClInclude Include="hpr\HPR_ThreadPoolFlex.h" />
+    <ClInclude Include="hpr\HPR_Time.h" />
+    <ClInclude Include="hpr\HPR_Timer.h" />
+    <ClInclude Include="hpr\HPR_Types.h" />
+    <ClInclude Include="hpr\HPR_Utils.h" />
+    <ClInclude Include="hpr\inter_include.h" />
+    <ClInclude Include="hpr\TimedWait.h" />
+    <ClInclude Include="Interface.h" />
+    <ClInclude Include="MangerInterface.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WebServiceInterface\cmsws_defines.h" />
+    <ClInclude Include="WebServiceInterface\DeviceInfoService_Defines.h" />
+    <ClInclude Include="WebServiceInterface\DeviceInfoService_Services.h" />
+    <ClInclude Include="WebServiceInterface\DeviceInfoService_stub.h" />
+    <ClInclude Include="WebServiceInterface\envH.h" />
+    <ClInclude Include="WebServiceInterface\envStub.h" />
+    <ClInclude Include="WebServiceInterface\gsoap_server.h" />
+    <ClInclude Include="WebServiceInterface\stdsoap2.h" />
+    <ClInclude Include="WebServiceInterface\VehicleInfoService_Defines.h" />
+    <ClInclude Include="WebServiceInterface\VehicleInfoService_Services.h" />
+    <ClInclude Include="WebServiceInterface\VehicleInfoService_stub.h" />
+    <ClInclude Include="WebServiceManger.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AlarmManger.cpp" />
+    <ClCompile Include="ConfigManger.cpp" />
+    <ClCompile Include="DeviceManger.cpp" />
+    <ClCompile Include="Interface.cpp" />
+    <ClCompile Include="MangerInterface.cpp" />
+    <ClCompile Include="RCPU.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="WebServiceManger.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
