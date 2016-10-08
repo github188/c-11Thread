@@ -1,4 +1,6 @@
 #include "AlarmManger.h"
+#include "PMSManger.h"
+#include "hpr\HPR_Time.h"
 //回调函数
 void CALLBACK AlarmMessage2PicCallBack(LONG  lCommand, NET_DVR_ALARMER  *pAlarmer, char  *pAlarmInfo, DWORD  dwBufLen, void  *pUser);
 
@@ -22,62 +24,91 @@ int CAlarmManger::Close()
 
 int CAlarmManger::loop()
 {
-	std::vector<MangerDeviceInfo>  tempDevice = m_deviceManger->GetManualDevice();
-	std::vector<MangerDeviceInfo>::iterator  iterDeivice = tempDevice.begin();
-	for (; iterDeivice != tempDevice.end(); iterDeivice++)
+	int nRet = HPR_OK;
+
+	if (m_deviceManger->DeviceIsChange())
 	{
-		int nRet = HPR_OK;
-		std::vector<MangerDeviceInfo>::iterator iterLogin = m_vDeviceManger.begin();
-		for (; iterLogin != m_vDeviceManger.end(); iterLogin++)
+		std::vector<MangerDeviceInfo>  tempDevice = m_deviceManger->GetManualDevice();
+		std::vector<MangerDeviceInfo>::iterator  iterDeivice = tempDevice.begin();
+		for (; iterDeivice != tempDevice.end(); iterDeivice++)
 		{
-			if (strcpy_s((*iterLogin).szIp, (*iterDeivice).szIp) == 0 && (*iterDeivice).iPort == (*iterLogin).iPort)
+			std::vector<MangerDeviceInfo>::iterator iterLogin = m_vDeviceManger.begin();
+			for (; iterLogin != m_vDeviceManger.end(); iterLogin++)
 			{
-				LOG_INFO("device is login!");
-				nRet = HPR_ERROR;
-				break;
+				if (strcpy_s((*iterLogin).szIp, (*iterDeivice).szIp) == 0 && (*iterDeivice).iPort == (*iterLogin).iPort)
+				{
+					//LOG_INFO("device is login!");
+					nRet = HPR_ERROR;
+					break;
+				}
 			}
-		}
-		if (HPR_OK == nRet)
-		{
-			LOG_INFO("device start login!");
-			if (HPR_OK == LoginDevice(*iterDeivice))
+			if (HPR_OK == nRet)
 			{
-				m_vDeviceManger.push_back(*iterDeivice);
+				//LOG_INFO("device start login!");
+				if (HPR_OK == LoginDevice(*iterDeivice))
+				{
+					m_vDeviceManger.push_back(*iterDeivice);
+				}
+				////LOG_INFO("device login end!");
 			}
-			LOG_INFO("device login end!");
 		}
 	}
-	HPR_Sleep(1000);
-	return HPR_OK;
+	else
+	{
+		HPR_Sleep(1000);
+	}
+		
+	return nRet;
 }
 
 //回调函数
 void CALLBACK AlarmMessage2PicCallBack(LONG  lCommand, NET_DVR_ALARMER  *pAlarmer, char  *pAlarmInfo, DWORD  dwBufLen, void  *pUser)
 {
+	CAlarmManger *alarm = (CAlarmManger *)pUser;
 	switch (lCommand)
 	{
 		case COMM_ALARM_RULE:
 		{
-				LOG_INFO("COMM_ALARM_RULE");
+				////LOG_INFO("COMM_ALARM_RULE");
 		}
 			break;
 		case COMM_ITS_PLATE_RESULT:
 		{
 				//0x3050报警值上传
-				LOG_INFO("COMM_ITS_PLATE_RESULT");
+				////LOG_INFO("COMM_ITS_PLATE_RESULT");
 				//抓拍机终端图片上传
 				NET_ITS_PLATE_RESULT* plateInfo = (NET_ITS_PLATE_RESULT*)pAlarmInfo;
 				//车牌信息
 				std::string plate = plateInfo->struPlateInfo.sLicense;
-				LOG_INFO("plate num : %s", plate.c_str());
+				////LOG_INFO("plate num : %s", plate.c_str());
 
 				UpLoadInfo Alarm_info = { 0 };
+				Alarm_info.strIp = pAlarmer->sDeviceIP;
+				Alarm_info.iPort = pAlarmer->wLinkPort;
+				Alarm_info.iChannel = plateInfo->byChanIndex;
+				Alarm_info.struPlateInfo = plateInfo->struPlateInfo;
+				Alarm_info.struVehicleInfo = plateInfo->struVehicleInfo;
+
+				//建立报警时间结构
+				HPR_TIME_EXP_S alarmTime = { 0 };
+				HPR_ExpTimeFromTimeLocal(HPR_TimeNow(), &alarmTime);
+				alarmTime.tm_year += 1900;
+				alarmTime.tm_mon += 1;
+				char temp[32];
+				memset(temp, 0, sizeof(temp));
+				sprintf(temp, "%04d-%02d-%02dT%02d:%02d:%02d", alarmTime.tm_year,
+					alarmTime.tm_mon,
+					alarmTime.tm_mday,
+					alarmTime.tm_hour,
+					alarmTime.tm_min,
+					alarmTime.tm_sec);
+				Alarm_info.strHapentTime = temp;
 				for (int i = 0; i < (int)plateInfo->dwPicNum; i++)
 				{
 					if (plateInfo->struPicInfo[i].byType == CAR_TYPE)  //1车辆图
 					{
 						Alarm_info.pBigPicData = plateInfo->struPicInfo[i].pBuffer == NULL ? "" : (char *)plateInfo->struPicInfo[i].pBuffer;
-						Alarm_info.uiBigPicLen = plateInfo->struPicInfo[i].dwDataLen;
+						Alarm_info.uiBigPicLen = plateInfo->struPicInfo[i].dwDataLen;					
 					}
 					else if (plateInfo->struPicInfo[i].byType == PLATE_TYPE)  //0车牌图
 					{
@@ -85,27 +116,20 @@ void CALLBACK AlarmMessage2PicCallBack(LONG  lCommand, NET_DVR_ALARMER  *pAlarme
 						Alarm_info.uiSmallLen = plateInfo->struPicInfo[i].dwDataLen;
 					}
 				}
-				Alarm_info.szIp = pAlarmer->sDeviceIP;
-				Alarm_info.iPort = pAlarmer->wLinkPort;
-				Alarm_info.iChannel = plateInfo->byChanIndex;
-				Alarm_info.struPlateInfo = plateInfo->struPlateInfo;
-				Alarm_info.struVehicleInfo = plateInfo->struVehicleInfo;
 
-				//校准车牌颜色，颜色转换
-				//GetRightInfo(WorkData);
-				//上传车牌图至cms，调用webservice接口
-				//CProEvent::GetInstance()->ProcCarEvent(WorkData);
+				//上传图片
+				alarm->UpLoadPicToPms(Alarm_info);
 		}
 			break;
 		case COMM_UPLOAD_PLATE_RESULT:
 		{
-				LOG_INFO("COMM_UPLOAD_PLATE_RESULT");
+				//LOG_INFO("COMM_UPLOAD_PLATE_RESULT");
 
 		}
 			break;
 		case COMM_ITS_GATE_VEHICLE:
 		{
-				LOG_INFO("COMM_ITS_GATE_VEHICLE");
+				//LOG_INFO("COMM_ITS_GATE_VEHICLE");
 
 		}
 			break;
@@ -138,7 +162,7 @@ int CAlarmManger::LoginDevice(MangerDeviceInfo deviceInfo)
 	}
 	else
 	{
-		NET_DVR_SetDVRMessageCallBack_V30(AlarmMessage2PicCallBack, NULL);
+		NET_DVR_SetDVRMessageCallBack_V30(AlarmMessage2PicCallBack, this);
 		NET_DVR_SETUPALARM_PARAM tmpSetupParam = { 0 };
 		tmpSetupParam.byFaceAlarmDetection = 1;//1-表示人脸侦测报警扩展(INTER_FACE_DETECTION) 
 		tmpSetupParam.byAlarmInfoType = 1; //上传报警信息类型（抓拍机支持），0-老报警信息（NET_DVR_PLATE_RESULT），1-新报警信息(NET_ITS_PLATE_RESULT)2012-9-28
@@ -176,7 +200,7 @@ int CAlarmManger::LogoutDevice()
 		if (nRet != HPR_TRUE)
 		{
 			nRet = NET_DVR_GetLastError();
-			LOG_ERROR("NET_DVR_CloseAlarmChan_V30 error : %d ，IP : %s ,port : %d", nRet, (*iter).ip.c_str(), (*iter).port);
+			//LOG_ERROR("NET_DVR_CloseAlarmChan_V30 error : %d ，IP : %s ,port : %d", nRet, (*iter).ip.c_str(), (*iter).port);
 
 			continue;
 		}
@@ -184,10 +208,10 @@ int CAlarmManger::LogoutDevice()
 		if (nRet != HPR_TRUE)
 		{
 			nRet = NET_DVR_GetLastError();
-			LOG_ERROR("NET_DVR_Logout_V30 error : %d ，IP : %s ,port : %d", nRet, (*iter).ip.c_str(), (*iter).port);
+			//LOG_ERROR("NET_DVR_Logout_V30 error : %d ，IP : %s ,port : %d", nRet, (*iter).ip.c_str(), (*iter).port);
 			continue;
 		}
-		LOG_INFO("Logout Success!  IP : %s ,port : %d", (*iter).ip.c_str(), (*iter).port);
+		//LOG_INFO("Logout Success!  IP : %s ,port : %d", (*iter).ip.c_str(), (*iter).port);
 	}
 
 	return HPR_OK;
@@ -197,5 +221,13 @@ int CAlarmManger::transformColor(int color)
 {
 	int nRet = 0;
 
+	return nRet;
+}
+
+int CAlarmManger::UpLoadPicToPms(UpLoadInfo upLoadInfo)
+{
+	int nRet = HPR_OK;
+	//上传至PMS
+	m_pmsManger->UpLoadPic(upLoadInfo);
 	return nRet;
 }

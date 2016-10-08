@@ -3,10 +3,12 @@
 
 CMangerInterface::CMangerInterface()
 {
+
 }
 
 CMangerInterface::~CMangerInterface()
 {
+
 }
 
 void CMangerInterface::detachThread()
@@ -19,6 +21,7 @@ void CMangerInterface::detachThread()
 
 int CMangerInterface::loop()
 {
+	HPR_Sleep(1000);
 	return 0;
 };
 

@@ -24,13 +24,7 @@ typedef struct  Stru_getDvrInfoResponse
     int iResult;    
     int iErrorCode;
     int iInfoNum;
-	int currentPage;
-	int totalPage;
     Stru_DvrDevInfo *pInfo;
 }Stru_getDvrInfoResponse;
  
-typedef struct  Stru_getDvrInfo
-{ 
-	int pageNum;
-	int pageSize;
-}Stru_getDvrInfo;
+

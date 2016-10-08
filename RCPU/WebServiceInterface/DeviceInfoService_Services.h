@@ -22,7 +22,7 @@ extern "C"
 {
 #endif
 
-    CMSWS_EXTERN Stru_getDvrInfoResponse* CMSWS_API DeviceInfoService_getAllDeviceInfo(const char* endpointUri,Stru_getDvrInfo *deviceInfo);
+    CMSWS_EXTERN Stru_getDvrInfoResponse* CMSWS_API DeviceInfoService_getAllDeviceInfo(const char* endpointUri);
 
 #ifdef __cplusplus
 }

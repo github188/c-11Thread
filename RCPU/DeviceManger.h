@@ -28,10 +28,16 @@ private:
 private:
 	std::vector<MangerDeviceInfo> m_CmsDeviceInfo;
 	std::vector<MangerDeviceInfo> m_ManualDeviceInfo;
+
+	bool m_bDeviceChange;
 public:
 	std::vector<MangerDeviceInfo> GetManualDevice()
 	{
 		return m_ManualDeviceInfo;
+	}
+	bool DeviceIsChange()
+	{
+		return m_bDeviceChange;
 	}
 private:
 	int GetDeviceFromGSS();

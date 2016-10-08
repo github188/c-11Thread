@@ -40,6 +40,12 @@
     <Filter Include="WebService">
       <UniqueIdentifier>{6d6cbb37-644a-4866-b4de-5813832b8007}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PMS">
+      <UniqueIdentifier>{3c5977d5-1b30-4499-a154-e0704539982b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CMARKUP">
+      <UniqueIdentifier>{53dfedda-fcb6-430d-84ee-26f07532db73}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -249,6 +255,15 @@
     <ClInclude Include="WebServiceManger.h">
       <Filter>WebService</Filter>
     </ClInclude>
+    <ClInclude Include="PMSManger.h">
+      <Filter>PMS</Filter>
+    </ClInclude>
+    <ClInclude Include="commonClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="markup\markup.h">
+      <Filter>CMARKUP</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -274,6 +289,12 @@
     </ClCompile>
     <ClCompile Include="WebServiceManger.cpp">
       <Filter>WebService</Filter>
+    </ClCompile>
+    <ClCompile Include="PMSManger.cpp">
+      <Filter>PMS</Filter>
+    </ClCompile>
+    <ClCompile Include="markup\markup.cpp">
+      <Filter>CMARKUP</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

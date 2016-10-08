@@ -76,6 +76,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;./lib/hpr.lib;./lib/hlog.lib;./lib/log4cxx.lib;./lib/letterLib.lib;./lib/eXosipd.lib;./lib/libappweb.lib;./lib/libhttp.lib;./lib/libmpr.lib;./lib/hcnetsdk.lib;./lib/libpq.lib;./lib/vrbClientSDK.lib;./lib/VehicleInfoService.lib;./lib/gsoap.lib;./lib/DeviceInfoService.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -83,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlarmManger.h" />
+    <ClInclude Include="commonClass.h" />
     <ClInclude Include="ConfigManger.h" />
     <ClInclude Include="DeviceManger.h" />
     <ClInclude Include="HCNetSDK\DataType.h" />
@@ -136,6 +138,8 @@
     <ClInclude Include="hpr\TimedWait.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="MangerInterface.h" />
+    <ClInclude Include="markup\markup.h" />
+    <ClInclude Include="PMSManger.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WebServiceInterface\cmsws_defines.h" />
@@ -157,6 +161,8 @@
     <ClCompile Include="DeviceManger.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="MangerInterface.cpp" />
+    <ClCompile Include="markup\markup.cpp" />
+    <ClCompile Include="PMSManger.cpp" />
     <ClCompile Include="RCPU.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="WebServiceManger.cpp" />

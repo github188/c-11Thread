@@ -1,4 +1,6 @@
 #pragma once
+#ifndef ALARM_MANGER
+#define ALARM_MANGER
 #include "stdafx.h"
 #include "DeviceManger.h"
 #include "HCNetSDK\HCNetSDK.h"
@@ -25,32 +27,38 @@ typedef struct{
 	unsigned int uiSmallLen;
 	NET_DVR_PLATE_INFO  struPlateInfo;    //车牌信息结构
 	NET_DVR_VEHICLE_INFO struVehicleInfo; //车辆信息
-	std::string szCameraName;
-	std::string szIp;
-	std::string szBigPicUrl;
-	std::string szSmallPicUrl;
-	std::string pBigPicData;
-	std::string pSmallPicData;
-	std::string szHapentTime;
+	std::string strCameraName;
+	std::string strIp;
+	std::string strBigPicUrl;
+	std::string strSmallPicUrl;
+	char* pBigPicData;
+	char* pSmallPicData;
+	std::string strHapentTime;
+	std::string strPmsUrl;
 }UpLoadInfo;
 
+class CPMSManger;
 class CAlarmManger:public CMangerInterface
 {
 public:
 	CAlarmManger();
-	CAlarmManger(CDeviceManger *pDevice)
+	CAlarmManger(CDeviceManger *pDevice,CPMSManger *pPms)
 	{
 		m_deviceManger = pDevice;
+		m_pmsManger = pPms;
 		NET_DVR_Init();
 	};
 
 	~CAlarmManger();
 public:
-	int loop();
-	int Close();
+	virtual int loop();
+	virtual int Close();
 public:
 	int LoginDevice(MangerDeviceInfo deviceInfo);
 	int LogoutDevice();
+
+public:
+	int UpLoadPicToPms(UpLoadInfo upLoadInfo);
 private:
 	int transformColor(int color);
 
@@ -58,5 +66,6 @@ private:
 	std::vector<LoginHandleManger> m_vLoginHandle;
 private:
 	CDeviceManger *m_deviceManger;
+	CPMSManger *m_pmsManger;
 };
-
+#endif
